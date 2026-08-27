@@ -1,0 +1,135 @@
+/* Styles for in-page UI injected into YouTube */
+
+#yt-wl-cleaner-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999999;
+  background: rgba(18, 18, 20, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 0, 51, 0.2);
+  border-radius: 12px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #ffffff;
+  font-family: "Roboto", "Segoe UI", Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+  transform: translateY(20px) scale(0.96);
+  pointer-events: none;
+}
+
+#yt-wl-cleaner-toast.yt-wl-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.yt-wl-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff0033 0%, #cc0000 100%);
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(255, 0, 51, 0.4);
+}
+
+.yt-wl-badge svg {
+  width: 16px;
+  height: 16px;
+  fill: #ffffff;
+}
+
+.yt-wl-spinner {
+  animation: yt-wl-spin 1s linear infinite;
+}
+
+@keyframes yt-wl-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.yt-wl-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.yt-wl-title {
+  font-weight: 600;
+  font-size: 13px;
+  color: #ffffff;
+}
+
+.yt-wl-desc {
+  font-size: 12px;
+  color: #aaaaaa;
+}
+
+.yt-wl-counter {
+  font-weight: 700;
+  color: #ff4e45;
+}
+
+.yt-wl-btn-stop {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  margin-left: 6px;
+}
+
+.yt-wl-btn-stop:hover {
+  background: rgba(255, 0, 51, 0.8);
+  border-color: rgba(255, 0, 51, 0.9);
+}
+
+/* Injected Button on YouTube Header */
+.yt-wl-injected-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #ff0033 0%, #b80024 100%);
+  color: #ffffff !important;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 18px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(255, 0, 51, 0.35);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  margin: 8px 0;
+  z-index: 100;
+}
+
+.yt-wl-injected-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(255, 0, 51, 0.5);
+  background: linear-gradient(135deg, #ff1a47 0%, #d40029 100%);
+}
+
+.yt-wl-injected-btn:active {
+  transform: translateY(0);
+}
+
+.yt-wl-injected-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}

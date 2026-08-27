@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Watch Later Cleaner</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>Watch Later Cleaner</h1>
+          <span class="version">v1.0.0</span>
+        </div>
+      </div>
+      <div id="status-badge" class="badge badge-idle">Pronto</div>
+    </header>
+
+    <!-- Not on YouTube Warning (Hidden when on valid page) -->
+    <div id="wrong-page-card" class="card warning-card hidden">
+      <div class="warning-icon">⚠️</div>
+      <div class="warning-content">
+        <p class="warning-title">Você não está na lista</p>
+        <p class="warning-desc">Abra a lista "Assistir mais tarde" para iniciar a limpeza automática.</p>
+        <button id="btn-open-wl" class="btn btn-secondary btn-sm">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+            <path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+          </svg>
+          Abrir Assistir Mais Tarde
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <main class="main-content">
+      <!-- Stats Card -->
+      <div class="card stats-card">
+        <div class="stat-item">
+          <span class="stat-label">Vídeos Removidos</span>
+          <div class="stat-number-wrapper">
+            <span id="counter" class="stat-number">0</span>
+            <span class="stat-unit">vídeos</span>
+          </div>
+        </div>
+        <div class="stat-icon-bg">
+          <svg viewBox="0 0 24 24">
+            <path d="M15 4V3H9v1H4v2h1v13c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6h1V4h-5zm2 15H7V6h10v13zM9 8h2v9H9zm4 0h2v9h-2z"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Settings / Speed Control -->
+      <div class="card settings-card">
+        <div class="card-header">
+          <span class="card-title">Velocidade da Limpeza</span>
+          <span id="delay-label" class="delay-value">1.0s / vídeo</span>
+        </div>
+        
+        <div class="speed-presets">
+          <button class="preset-btn" data-delay="500">Rápido (0.5s)</button>
+          <button class="preset-btn active" data-delay="1000">Normal (1.0s)</button>
+          <button class="preset-btn" data-delay="1500">Seguro (1.5s)</button>
+        </div>
+
+        <div class="slider-container">
+          <input type="range" id="delay-slider" min="400" max="2500" step="100" value="1000">
+          <div class="slider-ticks">
+            <span>0.4s</span>
+            <span>Seguro</span>
+            <span>2.5s</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="actions-group">
+        <button id="btn-start" class="btn btn-primary">
+          <svg class="btn-icon" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          <span id="btn-start-text">Iniciar Limpeza</span>
+        </button>
+
+        <button id="btn-stop" class="btn btn-danger hidden">
+          <svg class="btn-icon" viewBox="0 0 24 24">
+            <path d="M6 6h12v12H6z"/>
+          </svg>
+          <span>Interromper</span>
+        </button>
+      </div>
+
+      <!-- Status Message Log -->
+      <div class="status-log-wrapper">
+        <div id="status-message" class="status-message">Pronto para limpar a playlist.</div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span>Auto-scroll incluso • Sem perda de dados</span>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
