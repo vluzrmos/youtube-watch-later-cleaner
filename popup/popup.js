@@ -95,6 +95,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   // 4. Action Handlers
+  const githubLink = document.getElementById('github-link');
+  if (githubLink) {
+    githubLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      chrome.tabs.create({ url: 'https://github.com/vluzrmos/youtube-watch-later-cleaner' });
+    });
+  }
+
   btnOpenWL.addEventListener('click', () => {
     chrome.tabs.create({ url: 'https://www.youtube.com/playlist?list=WL' });
     window.close();
